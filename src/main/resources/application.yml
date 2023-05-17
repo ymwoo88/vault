@@ -1,19 +1,9 @@
-### Vault
-spring.config.import: vault://secret/foo
-spring.cloud.vault:
-  enabled: true
-  fail-fast: true
-  connection-timeout: 3000
-  read-timeout: 3000
-  authentication: approle
-  app-role:
-    app-role-path: "approle"
-    role: "my-role"
-    role-id: ${VAULT_ROLE_ID}
-    secret-id: ${VAULT_SECRET_ID}
-  host: 127.0.0.1
-  port: 8200
-  scheme: http
-
-### Vault db value
-test1: ${robot}
+spring:
+  cloud:
+    vault:
+      app-role:
+        app-role-path: approle
+        role: appfnd
+        role-id: ${VAULT_ROLE_ID}
+        secret-id: ${VAULT_SECRET_ID}
+      uri: https://kmsdev.hanatour.com:8200
